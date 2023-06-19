@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messages</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .message-list {
+        margin-top: 20px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .message-list li {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .message-table td,
+      .message-table th {
+        font-size: 16px;
+        vertical-align: middle;
+        border-top: 1px solid #dee2e6;
+      }
+
+      .message-table tbody tr:last-child td {
+        border-bottom: 1px solid #dee2e6;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form>
+      <div class="container">
+        <h1 class="mt-5 mb-4">All Messages</h1>
+        <div class="table-responsive">
+          <table class="table table-striped message-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody id="message-table-body">
+              <!-- Table rows will be populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
+    <script>
+      const socket = io("http://localhost:7000");
+      socket.on("message-auth", (message) => {
+        console.log(message);
+      });
+
+      const messageTableBody = document.getElementById("message-table-body");
+
+      socket.on("users", (users) => {
+        console.log(users);
+      });
+      socket.on("backend-contact", (contact) => {
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+          <td>${contact.user}</td>
+          <td>${contact.message.name}</td>
+          <td>${contact.message.phoneNumber}</td>
+          <td>${contact.message.email}</td>
+          <td>${contact.message.message}</td>
+        `;
+        messageTableBody.appendChild(newRow);
+      });
+
+      socket.emit("message", { message: "Hello, I have finished!" });
+    </script>
+  </body>
+</html>

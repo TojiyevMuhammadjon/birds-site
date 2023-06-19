@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Star Admin2</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="card-body">
+            <div class="text-center">
+              <img src="/images/logo.svg" alt="logo" class="mb-4">
+              <h4 class="mb-4">Hello! Let's get started</h4>
+              <h6 class="fw-light mb-4">Sign in to continue.</h6>
+            </div>
+            <form action="/auth/login" method="POST">
+              <div class="form-group">
+                <input type="text" class="form-control form-control-lg" placeholder="Username" name="username">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control form-control-lg" placeholder="Password" name="password">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">SIGN IN</button>
+              </div>
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="keepSignedIn">
+                <label class="form-check-label" for="keepSignedIn">Keep me signed in</label>
+              </div>
+              <div class="text-right mb-4">
+                <a href="#" class="text-black">Forgot password?</a>
+              </div>
+              <div class="mb-4">
+                <button type="button" class="btn btn-block btn-facebook">
+                  <i class="fab fa-facebook-f me-2"></i>Connect using Facebook
+                </button>
+              </div>
+              <div class="text-center">
+                <p class="fw-light mb-0">Don't have an account? <a href="register.html" class="text-primary">Create one</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
